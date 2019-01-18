@@ -13,7 +13,7 @@
 		2E14787C21ED1E7900E84B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E14787B21ED1E7900E84B51 /* Assets.xcassets */; };
 		2E14787F21ED1E7900E84B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E14787D21ED1E7900E84B51 /* LaunchScreen.storyboard */; };
 		2E14788721ED1EB000E84B51 /* PhotoJournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14788621ED1EAF00E84B51 /* PhotoJournalDetailViewController.swift */; };
-		2E14789121EE95C000E84B51 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14789021EE95C000E84B51 /* PhotoCollectionViewCell.swift */; };
+		2E14789121EE95C000E84B51 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14789021EE95C000E84B51 /* PhotoCell.swift */; };
 		2E1478DB21EFE0FB00E84B51 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1478DA21EFE0FB00E84B51 /* DataPersistenceManager.swift */; };
 		2E1478DD21EFE13E00E84B51 /* PhotoJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1478DC21EFE13E00E84B51 /* PhotoJournal.swift */; };
 		2E1478DF21EFE15800E84B51 /* PhotoJournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1478DE21EFE15800E84B51 /* PhotoJournalModel.swift */; };
@@ -28,7 +28,7 @@
 		2E14787E21ED1E7900E84B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E14788021ED1E7900E84B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E14788621ED1EAF00E84B51 /* PhotoJournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalDetailViewController.swift; sourceTree = "<group>"; };
-		2E14789021EE95C000E84B51 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		2E14789021EE95C000E84B51 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		2E1478DA21EFE0FB00E84B51 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		2E1478DC21EFE13E00E84B51 /* PhotoJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournal.swift; sourceTree = "<group>"; };
 		2E1478DE21EFE15800E84B51 /* PhotoJournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalModel.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		2E1478E121EFE17E00E84B51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2E14789021EE95C000E84B51 /* PhotoCollectionViewCell.swift */,
+				2E14789021EE95C000E84B51 /* PhotoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E14788721ED1EB000E84B51 /* PhotoJournalDetailViewController.swift in Sources */,
-				2E14789121EE95C000E84B51 /* PhotoCollectionViewCell.swift in Sources */,
+				2E14789121EE95C000E84B51 /* PhotoCell.swift in Sources */,
 				2E1478DD21EFE13E00E84B51 /* PhotoJournal.swift in Sources */,
 				2E14787721ED1E7700E84B51 /* PhotoJournalViewController.swift in Sources */,
 				2E14787521ED1E7700E84B51 /* AppDelegate.swift in Sources */,
