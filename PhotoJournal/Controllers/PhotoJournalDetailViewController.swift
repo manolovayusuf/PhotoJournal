@@ -55,8 +55,6 @@ class PhotoJournalDetailViewController: UIViewController {
     @IBAction func photoLibraryPressed(_ sender: UIBarButtonItem) {
         imagePickerViewController.sourceType = .photoLibrary
         showImagePickerController()
-        
-        
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
@@ -107,6 +105,7 @@ extension PhotoJournalDetailViewController: UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
 }
+
 extension PhotoJournalDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if photoDescription.text == photoDescriptionPlaceholder {

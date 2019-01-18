@@ -11,23 +11,17 @@ import AVFoundation
 
 class PhotoJournalViewController: UIViewController {
     
-    
     @IBOutlet weak var photoJournalCollection: UICollectionView!
-    
     
     private var allJournalImages = PhotoJournalModel.getPhotoJournal(){
         didSet {
             photoJournalCollection.reloadData()
         }
     }
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         photoJournalCollection.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,43 +29,37 @@ class PhotoJournalViewController: UIViewController {
     }
     
     @IBAction func editButton(_ sender: UIButton) {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "nil", message: "Choose Option", preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {(action) in
-            PhotoJournalModel.deletePhotos(atIndex: sender.tag)
-            self.allJournalImages = PhotoJournalModel.getPhotoJournal()
-        })
         let editAction = UIAlertAction(title: "Edit", style: .default, handler: {(action) in
             PhotoJournalModel.editPhotos(photos: self.allJournalImages[sender.tag], atIndex: sender.tag)
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
             guard let viewController = storyBoard.instantiateViewController(withIdentifier: "editStoryBoard") as? PhotoJournalDetailViewController else { return }
             viewController.imageIndex = sender.tag
             viewController.photoArray = self.allJournalImages[sender.tag]
-            self.present(viewController, animated: true, completion: nil)
-        })
+            self.present(viewController, animated: true, completion: nil)})
         
         let shareAction = UIAlertAction(title: "Share", style: .default, handler: {(action) in
-            
-        })
+            let shareText = self.allJournalImages[sender.tag].description
+
+            if let image = UIImage(data: self.allJournalImages[sender.tag].imageData) {
+                let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+                self.present(vc, animated: true)
+            }})
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {(action) in
+            PhotoJournalModel.deletePhotos(atIndex: sender.tag)
+            self.allJournalImages = PhotoJournalModel.getPhotoJournal()})
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in })
         
-        optionMenu.addAction(deleteAction)
-        optionMenu.addAction(editAction)
-        optionMenu.addAction(shareAction)
-        optionMenu.addAction(cancelAction)
-        self.present(optionMenu, animated: true, completion: nil)
+        
+        alert.addAction(editAction)
+        alert.addAction(shareAction)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 }
 extension PhotoJournalViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
