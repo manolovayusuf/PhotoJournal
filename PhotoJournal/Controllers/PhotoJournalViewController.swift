@@ -36,7 +36,7 @@ class PhotoJournalViewController: UIViewController {
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
             guard let viewController = storyBoard.instantiateViewController(withIdentifier: "editStoryBoard") as? PhotoJournalDetailViewController else { return }
             viewController.imageIndex = sender.tag
-            viewController.photoArray = self.allJournalImages[sender.tag]
+            viewController.currentPhoto = self.allJournalImages[sender.tag]
             self.present(viewController, animated: true, completion: nil)})
         
         let shareAction = UIAlertAction(title: "Share", style: .default, handler: {(action) in
@@ -46,6 +46,7 @@ class PhotoJournalViewController: UIViewController {
                 let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
                 self.present(vc, animated: true)
             }})
+        
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {(action) in
             PhotoJournalModel.deletePhotos(atIndex: sender.tag)

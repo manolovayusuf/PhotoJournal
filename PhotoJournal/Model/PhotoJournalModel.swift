@@ -71,4 +71,9 @@ final class PhotoJournalModel {
             print("property list encoding error: \(error)")
         }
     }
+    
+    static func update(photos: PhotoJournal, atIndex index: Int) {
+        photoJournals[index] = photos
+        save()
+    }
 }

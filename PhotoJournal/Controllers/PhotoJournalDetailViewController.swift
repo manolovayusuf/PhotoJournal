@@ -18,9 +18,9 @@ class PhotoJournalDetailViewController: UIViewController {
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
-    public var imageIndex = 0
-    
-    public var photoArray: PhotoJournal?
+    public var imageIndex: Int?
+    private var isEditingList = false
+    public var currentPhoto: PhotoJournal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +48,13 @@ class PhotoJournalDetailViewController: UIViewController {
         isoDateFormatter.formatOptions = [.withFullDate, .withFullTime, .withInternetDateTime, .withTimeZone, .withDashSeparatorInDate]
         let timestamp = isoDateFormatter.string(from: date)
         let post = PhotoJournal.init(createdAt: timestamp, imageData: saveImage, description: photoDescrip)
-        PhotoJournalModel.addPhotos(photos: post)
-        dismiss(animated: true, completion: nil)
         
+        if let imageIndex = imageIndex, let currentPhoto = currentPhoto {
+            PhotoJournalModel.update(photos: post, atIndex: imageIndex)
+        } else {
+            PhotoJournalModel.addPhotos(photos: post)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func photoLibraryPressed(_ sender: UIBarButtonItem) {
@@ -74,11 +78,11 @@ class PhotoJournalDetailViewController: UIViewController {
             cameraButton.isEnabled = false
         }
         
-        if let photoArray = photoArray {
+        if let photoArray = currentPhoto {
             photoImage.image = UIImage.init(data: photoArray.imageData)
         }
         
-        if let photoArr = photoArray {
+        if let photoArr = currentPhoto {
             photoDescription.text = photoArr.description
         }
     }
@@ -105,6 +109,7 @@ extension PhotoJournalDetailViewController: UIImagePickerControllerDelegate, UIN
         }
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension PhotoJournalDetailViewController: UITextViewDelegate {

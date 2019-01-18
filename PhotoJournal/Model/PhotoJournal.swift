@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PhotoJournal: Codable {
+struct PhotoJournal: Codable, Equatable {
     let createdAt: String
     let imageData: Data
     let description: String
