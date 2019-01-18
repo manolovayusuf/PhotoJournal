@@ -29,7 +29,7 @@ class PhotoJournalViewController: UIViewController {
     }
     
     @IBAction func editButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "nil", message: "Choose Option", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "Choose Option", preferredStyle: .actionSheet)
         
         let editAction = UIAlertAction(title: "Edit", style: .default, handler: {(action) in
             PhotoJournalModel.editPhotos(photos: self.allJournalImages[sender.tag], atIndex: sender.tag)

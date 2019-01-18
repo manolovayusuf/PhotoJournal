@@ -25,6 +25,7 @@ class PhotoJournalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImagePickerViewController()
+        setupTextView()
     }
     
     private func setupTextView() {
